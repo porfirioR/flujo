@@ -12,6 +12,7 @@ export class ContactApiService {
 
   constructor(private readonly httpClient: HttpClient) {
     this.baseUrl = 'https://azurefunction-app.azurewebsites.net/api/contact'
+    // this.baseUrl = 'http://localhost:7298/api/contact'
   }
 
   public sendContactData = (request: ContactApiRequest): Observable<ContactApiModel> => {

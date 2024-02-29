@@ -1,5 +1,5 @@
 export interface ContactApiModel {
-  id: number
+  Id: number
   name: string
   zipCode: number
   property: string
