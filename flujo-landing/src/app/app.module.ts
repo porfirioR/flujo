@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ImagesGridComponent } from './images-grid/images-grid.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CommonModule } from '@angular/common';
     RouterModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule,
     ImagesGridComponent
   ],
   providers: [],

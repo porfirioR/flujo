@@ -61,7 +61,7 @@ button.button-section {
 h1 {
   display: flex;
   color: #305677;
-  text-align: center;
+  text-align: justify;
   font-family: Montserrat, serif;
   font-size: 48px;
   font-style: normal;
@@ -148,10 +148,6 @@ p {
   font-weight: 700 !important;
   margin: 0 !important;
 }
-
-// #logo {
-//   width: 25%;
-// }
 
 .banner-logo-section {
   justify-content: center;
@@ -271,6 +267,12 @@ p {
     justify-content: center;
     display: flex;
   }
+  .card-section {
+    margin-top: 18rem;
+  }
+  .text-who-we-are-responisve {
+    margin-top: 8rem;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -290,5 +292,8 @@ p {
     display: flex;
     justify-content: center;
     margin-top: 3rem;
+  }
+  .card-container {
+    margin-left: 0;
   }
 }

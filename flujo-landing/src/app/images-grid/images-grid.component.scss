@@ -28,11 +28,12 @@
   position: relative;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 992px) and (max-width: 1600px) {
   .card-container {
     width: 600px;
     height: 600px;
     margin-left: 0;
     padding: 2rem;
+    margin-top: 8rem;
   }
 }

@@ -5,13 +5,12 @@
     </div>
   </div>
   <div class="banner-img-section">
-    <img alt="Img" src="../assets/media/img/desktop-and-mobile.png" class="banner-img" title="Flux INC." />
+    <img alt="Img" src="../assets/media/img/desktop-and-mobile.png" class="banner-img" title="Flujo INC." />
   </div>
 </section>
-
 <section class="second-section row">
   <flux-workspace-images-grid class="col-12 col-md-6" *ngIf="showGrid"></flux-workspace-images-grid>
-  <section id="calculatorImg" class="col-12 " *ngIf="!showGrid">
+  <section id="calculatorImg" class="col-12" *ngIf="!showGrid">
     <img alt="Img" src="../assets/media/img/calculator.webp" class="calculator-img" title="calculator img">
   </section>
   <div class="col-12 col-md-6 col-lg-5 d-flex text width-who-we-are">
@@ -43,7 +42,9 @@
         <label class="name-margin form-label fs-6 fw-bolder text-dark required" translate>
           Nombre
         </label>
-        <input formControlName="name" type="text" id="name" class="form-control bg-transparent" />
+        <input formControlName="name" type="text" id="name" class="form-control bg-transparent"
+          [ngClass]="{'is-invalid': formGroup.controls.name.errors && formGroup.controls.name.touched}"
+        />
         <div class="invalid-feedback">
           Este campo es requerido.
         </div>
@@ -52,8 +53,10 @@
         <label class="form-label fs-6 fw-bolder text-dark required" translate>
           Apellido
         </label>
-        <input formControlName="lastName" type="text" id="lastName" class="form-control bg-transparent" />
-        <div class="invalid-feedback">
+        <input formControlName="lastName" type="text" id="lastName" class="form-control bg-transparent"
+          [ngClass]="{'is-invalid': formGroup.controls.lastName.errors && formGroup.controls.lastName.touched}"
+        />
+        <div class="invalid-feedback" *ngIf="formGroup.controls.lastName.hasError('required') && formGroup.controls.lastName.touched">
           Este campo es requerido.
         </div>
       </article>
@@ -61,8 +64,10 @@
         <label for="email" class="form-label fs-6 fw-bolder text-dark">
           Email
         </label>
-        <input formControlName="email" class="form-control bg-transparent" id="email">
-        <div class="invalid-feedback">
+        <input formControlName="email" class="form-control bg-transparent" id="email"
+          [ngClass]="{'is-invalid': formGroup.controls.email.errors && formGroup.controls.email.touched}"
+        />
+        <div class="invalid-feedback" *ngIf="formGroup.controls.email.hasError('required') && formGroup.controls.email.touched">
           Este campo es requerido.
         </div>
       </article>
@@ -70,23 +75,26 @@
         <label for="phone" class="form-label fs-6 fw-bolder text-dark">
           Número de teléfono
         </label>
-        <input formControlName="phone" class="form-control bg-transparent" id="phone" />
-        <div class="invalid-feedback">
+        <input formControlName="phone" class="form-control bg-transparent" id="phone"
+          [ngClass]="{'is-invalid': formGroup.controls.phone.errors && formGroup.controls.phone.touched}"
+        />
+        <div class="invalid-feedback" *ngIf="formGroup.controls.phone.hasError('required') && formGroup.controls.phone.touched">
           Este campo es requerido.
         </div>
       </article>
       <article>
-        <label for="zipCode" class="form-label fs-6 fw-bolder text-dark required" translate>
+        <label for="zipCode" class="form-label fs-6 fw-bolder text-dark required">
           Zip Code
         </label>
         <input formControlName="zipCode" id="zipCode" type="text" class="form-control bg-transparent"
-          [ngClass]="{'is-invalid': formGroup.controls.zipCode.errors && formGroup.controls.zipCode.touched}" />
+          [ngClass]="{'is-invalid': formGroup.controls.zipCode.errors && formGroup.controls.zipCode.touched}"
+        />
         <div class="invalid-feedback"
-          *ngIf="formGroup.controls.zipCode.hasError('required') && formGroup.controls.zipCode.touched" translate>
+          *ngIf="formGroup.controls.zipCode.hasError('required') && formGroup.controls.zipCode.touched">
           Por favor ingrese un Zip Code válido.
         </div>
         <div class="invalid-feedback"
-          *ngIf="formGroup.controls.zipCode.hasError('min') && formGroup.controls.zipCode.touched" translate>
+          *ngIf="formGroup.controls.zipCode.hasError('min') && formGroup.controls.zipCode.touched">
           Zip Code tiene que tener 5 dígitos.
         </div>
         <div class="invalid-feedback"
@@ -103,7 +111,7 @@
           ¿Cuántas propiedades en renta tienes?
         </label>
         <div class="mb-3">
-          <select class="form-select" name="property" id="property"
+          <select class="form-select" formControlName="property" name="property" id="property"
             [ngClass]="{'is-invalid': formGroup.controls.property.errors && formGroup.controls.property.touched}">
             <option selected>Seleccione un valor</option>
             <option value="1">1</option>
@@ -116,7 +124,7 @@
         </div>
         <div class="invalid-feedback"
           *ngIf="formGroup.controls.property.hasError('required') && formGroup.controls.property.touched" translate>
-          Por favor ingrese un valoe.
+          Por favor ingrese un valor.
         </div>
       </div>
       <button [title]="'Save changes and submit current form'" type="button" class="btn btn-sm fw-bold btn-primary"
