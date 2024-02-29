@@ -1,0 +1,128 @@
+<section class="first-section-color" id="home">
+  <div class="banner-section">
+    <div class="col span-6 banner-logo-section">
+      <img alt="Img" id="logo" src="../assets/media/logo/logo-flujo.png" title="Flujo INC" />
+    </div>
+  </div>
+  <div class="banner-img-section">
+    <img alt="Img" src="../assets/media/img/desktop-and-mobile.png" class="banner-img" title="Flux INC." />
+  </div>
+</section>
+
+<section class="second-section row">
+  <flux-workspace-images-grid class="col-12 col-md-6" *ngIf="showGrid"></flux-workspace-images-grid>
+  <section id="calculatorImg" class="col-12 " *ngIf="!showGrid">
+    <img alt="Img" src="../assets/media/img/calculator.webp" class="calculator-img" title="calculator img">
+  </section>
+  <div class="col-12 col-md-6 col-lg-5 d-flex text width-who-we-are">
+    <span class="padding-1 text-who-we-are-responisve">
+      <h1>¿Quiénes somos?</h1>
+      <p class="w-100">Somos un grupo de profesionales en las áreas de programación, bienes raíces, impuestos, contabilidad y
+        desarrollo de sistemas que decidimos juntar nuestras habilidades para ayudar a inversionistas y empresarios a
+        mantener sus finanzas organizadas de una forma fácil y efectiva.
+      </p>
+      <p class="w-100"> Por eso creamos FLUJO INC., una herramienta que entrega soluciones a Inversionistas y Empresarios. Soluciones
+        a sus frustraciones de falta de organización financiera y tiempo para organizarse efectivamente.
+        Todos necesitamos informaciones financieras organizadas de nuestras inversiones en Bienes Raíces y negocios para
+        poder tomar decisiones alineadas con nuestras metas y cumplir con nuestras obligaciones tributarias con el
+        estado y el gobierno (IRS).
+        Descubre las herramientas y soluciones a tu alcance para mantener la armonía en tus finanzas.
+      </p>
+    </span>
+  </div>
+</section>
+<section id="form" class="card card-section">
+  <header class="card-header card-header-section">
+    <article class="card-title">
+      <h3>Registrate para el Lanzamiento de Flujo INC.</h3>
+    </article>
+  </header>
+  <main class="card-body">
+    <form class="form form-label" [formGroup]="formGroup">
+      <article>
+        <label class="name-margin form-label fs-6 fw-bolder text-dark required" translate>
+          Nombre
+        </label>
+        <input formControlName="name" type="text" id="name" class="form-control bg-transparent" />
+        <div class="invalid-feedback">
+          Este campo es requerido.
+        </div>
+      </article>
+      <article>
+        <label class="form-label fs-6 fw-bolder text-dark required" translate>
+          Apellido
+        </label>
+        <input formControlName="lastName" type="text" id="lastName" class="form-control bg-transparent" />
+        <div class="invalid-feedback">
+          Este campo es requerido.
+        </div>
+      </article>
+      <article>
+        <label for="email" class="form-label fs-6 fw-bolder text-dark">
+          Email
+        </label>
+        <input formControlName="email" class="form-control bg-transparent" id="email">
+        <div class="invalid-feedback">
+          Este campo es requerido.
+        </div>
+      </article>
+      <article>
+        <label for="phone" class="form-label fs-6 fw-bolder text-dark">
+          Número de teléfono
+        </label>
+        <input formControlName="phone" class="form-control bg-transparent" id="phone" />
+        <div class="invalid-feedback">
+          Este campo es requerido.
+        </div>
+      </article>
+      <article>
+        <label for="zipCode" class="form-label fs-6 fw-bolder text-dark required" translate>
+          Zip Code
+        </label>
+        <input formControlName="zipCode" id="zipCode" type="text" class="form-control bg-transparent"
+          [ngClass]="{'is-invalid': formGroup.controls.zipCode.errors && formGroup.controls.zipCode.touched}" />
+        <div class="invalid-feedback"
+          *ngIf="formGroup.controls.zipCode.hasError('required') && formGroup.controls.zipCode.touched" translate>
+          Por favor ingrese un Zip Code válido.
+        </div>
+        <div class="invalid-feedback"
+          *ngIf="formGroup.controls.zipCode.hasError('min') && formGroup.controls.zipCode.touched" translate>
+          Zip Code tiene que tener 5 dígitos.
+        </div>
+        <div class="invalid-feedback"
+          *ngIf="formGroup.controls.zipCode.hasError('max') && formGroup.controls.zipCode.touched" translate>
+          Zip Code tiene que tener 5 dígitos.
+        </div>
+        <div class="invalid-feedback"
+          *ngIf="formGroup.controls.zipCode.hasError('pattern') && formGroup.controls.zipCode.touched" translate>
+          Solo números estan permitidos.
+        </div>
+      </article>
+      <div>
+        <label for="property" class="form-label fs-6 fw-bolder text-dark required" translate>
+          ¿Cuántas propiedades en renta tienes?
+        </label>
+        <div class="mb-3">
+          <select class="form-select" name="property" id="property"
+            [ngClass]="{'is-invalid': formGroup.controls.property.errors && formGroup.controls.property.touched}">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="-1">Más de 5</option>
+          </select>
+        </div>
+        <div class="invalid-feedback"
+          *ngIf="formGroup.controls.property.hasError('required') && formGroup.controls.property.touched" translate>
+          Por favor ingrese un valoe.
+        </div>
+      </div>
+      <button [title]="'Save changes and submit current form'" type="button" class="btn btn-sm fw-bold btn-primary"
+        [disabled]="formGroup.invalid || saving" (click)="saveRegister()">
+        Guardar
+      </button>
+    </form>
+  </main>
+</section>
